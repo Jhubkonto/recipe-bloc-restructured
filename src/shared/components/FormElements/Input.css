@@ -18,14 +18,15 @@
   width: 100%;
   font: inherit;
   border: 1px solid #ccc;
-  background: #f8f8f8;
+  border-radius: 6px;
+  background: #D6B7F5;
   padding: 0.15rem 0.25rem;
 }
 
 .form-control input:focus,
 .form-control textarea:focus {
   outline: none;
-  background: #ebebeb;
+  background: #D6B7F5;
   border-color: #510077;
 }
 

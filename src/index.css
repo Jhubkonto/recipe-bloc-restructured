@@ -11,7 +11,10 @@ html {
 
 body {
   margin: 0;
-  background: #d9dbf1;
+  background: #E8B866;
+  background-color: #fffcfc;
+background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 .slide-in-left-enter {

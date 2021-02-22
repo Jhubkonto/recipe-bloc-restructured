@@ -4,12 +4,13 @@
 
 .recipe-item__content {
   padding: 0;
+  margin-top: 6rem;
 }
 
 .recipe-item__info {
   padding: 1rem;
   text-align: center;
-  background-color: #F64740;
+  background-color: #DB7769;
   color: white;
 }
 
@@ -48,11 +49,6 @@
 .recipe-item__actions button,
 .recipe-item__actions a {
   margin: 0.5rem;
-}
-
-.map-container {
-  height: 15rem;
-  width: 100%;
 }
 
 @media (min-width: 768px) {
