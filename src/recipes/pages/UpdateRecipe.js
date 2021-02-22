@@ -40,7 +40,7 @@ const UpdateRecipe = () => {
     const fetchRecipe = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/recipes/${recipeId}`
+          `${process.env.REACT_APP_BACKEND_URL}/recipes/${recipeId}`
         );
         setLoadedRecipe(responseData.recipe);
         setFormData(
@@ -65,14 +65,15 @@ const UpdateRecipe = () => {
     event.preventDefault();
     try {
       await sendRequest(
-        `http://localhost:5000/api/recipes/${recipeId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/recipes/${recipeId}`,
         'PATCH',
         JSON.stringify({
           title: formState.inputs.title.value,
           description: formState.inputs.description.value
         }),
         {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + auth.token
         }
       );
       history.push('/' + auth.userId + 'recipes');

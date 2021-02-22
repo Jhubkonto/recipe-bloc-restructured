@@ -13,12 +13,11 @@ import './RecipeItem.css';
 const RecipeItem = props => {
   const {isLoading, error, sendRequest, clearError} = useHttpClient();
   const auth = useContext(AuthContext);
-  const [showMap, setShowMap] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-  const openMapHandler = () => setShowMap(true);
-
-  const closeMapHandler = () => setShowMap(false);
+  const openRecipeHandler = () => {
+    window.open(props.address, '_blank');
+  };
 
   const showDeleteWarningHandler = () => {
     setShowConfirmModal(true);
@@ -31,9 +30,12 @@ const RecipeItem = props => {
   const confirmDeleteHandler = async () => {
     setShowConfirmModal(false);
     try {
-      await sendRequest(
-        `http://localhost:5000/api/recipes/${props.id}`,
-        'DELETE'
+      await sendRequest(process.env.REACT_APP_BACKEND_URL + `/recipes/${props.id}`,
+        'DELETE',
+        null,
+        {
+          Authorization: 'Bearer ' + auth.token
+        }
       );
       props.onDelete(props.id);
     } catch (err) {}
@@ -42,18 +44,6 @@ const RecipeItem = props => {
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      <Modal
-        show={showMap}
-        onCancel={closeMapHandler}
-        header={props.address}
-        contentClass="recipe-item__modal-content"
-        footerClass="recipe-item__modal-actions"
-        footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
-      >
-        <div className="map-container">
-          <p>For the weblink...</p>
-        </div>
-      </Modal>
       <Modal
         show={showConfirmModal}
         onCancel={cancelDeleteHandler}
@@ -78,7 +68,8 @@ const RecipeItem = props => {
         <Card className="recipe-item__content">
           {isLoading && <LoadingSpinner asOverlay />}
           <div className="recipe-item__image">
-            <img src={`http://localhost:5000/${props.image}`} alt={props.title} />
+            <img src={`${process.env.REACT_APP_ASSET_URL}/${props.image}`}
+            alt={props.title} />
           </div>
           <div className="recipe-item__info">
             <h2>{props.title}</h2>
@@ -86,7 +77,7 @@ const RecipeItem = props => {
             <p>{props.description}</p>
           </div>
           <div className="recipe-item__actions">
-            <Button inverse onClick={openMapHandler}>
+            <Button inverse onClick={openRecipeHandler}>
               VIEW SITE
             </Button>
             {auth.userId === props.creatorId && (
