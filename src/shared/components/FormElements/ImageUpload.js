@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import imageCompression from 'browser-image-compression';
 
 import Button from './Button';
 import './ImageUpload.css';
@@ -9,6 +10,11 @@ const ImageUpload = props => {
   const [isValid, setIsValid] = useState(false);
 
   const filePickerRef = useRef();
+  const compressionOptions = {
+    maxSizeMB: 1,
+    maxWidthOrHeight: 1920,
+    useWebWorker: true
+  }
 
   useEffect(() => {
     if (!file) {

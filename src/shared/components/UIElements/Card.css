@@ -5,6 +5,7 @@
   border-radius: 15px;
   padding: 3rem;
   overflow: hidden;
-  background: #855EF2;
+  background: black;
+  background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
   color: white;
 }

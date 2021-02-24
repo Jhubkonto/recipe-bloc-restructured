@@ -11,9 +11,8 @@
   height: 100%;
   text-decoration: none;
   padding: 1rem;
-  color: white;
-  background: #042a2b;
-  background-color: #042a2b;
+  color: #E8B866;
+  background: black;
   background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
@@ -39,7 +38,9 @@
   font-size: 1.5rem;
   margin: 0 0 0.5rem 0;
   font-weight: strong;
-  color: #E8B866;
+  /* color: #E8B866; */
+  color: white;
+  font-family: 'Lobster', cursive;
 }
 
 .user-item:hover h2,

@@ -93,7 +93,7 @@ const NewRecipe = () => {
       <ImageUpload
         id="image"
         onInput={inputHandler}
-        errorText="Please provide an image."
+        errorText=""
       />
       <Button type="submit" disabled={!formState.isValid}>
         ADD RECIPE
