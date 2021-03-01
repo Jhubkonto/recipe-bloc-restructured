@@ -1,7 +1,7 @@
 .avatar {
   width: 100%;
   height: 100%;
-  display: flex; 
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -12,4 +12,5 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  background-image: url('https://image.freepik.com/free-vector/hand-drawn-world-food-day_23-2148297200.jpg');
 }
