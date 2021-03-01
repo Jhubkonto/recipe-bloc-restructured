@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import imageCompression from 'browser-image-compression';
 
 import Button from './Button';
 import './ImageUpload.css';
@@ -10,11 +9,6 @@ const ImageUpload = props => {
   const [isValid, setIsValid] = useState(false);
 
   const filePickerRef = useRef();
-  const compressionOptions = {
-    maxSizeMB: 1,
-    maxWidthOrHeight: 1920,
-    useWebWorker: true
-  }
 
   useEffect(() => {
     if (!file) {
@@ -29,9 +23,41 @@ const ImageUpload = props => {
 
   const pickedHandler = event => {
     let pickedFile;
+    /////////////////////
+    // let localBase64;
+    /////////////////////
     let fileIsValid = isValid;
     if (event.target.files && event.target.files.length === 1) {
       pickedFile = event.target.files[0];
+
+      //////////////////////
+      // const reader = new FileReader();
+      //
+      // reader.onloadend = function () {
+      //   // Since it contains the Data URI, we should remove the prefix and keep only Base64 string
+      //   let b64 = reader.result;
+      //   let buff = new Buffer(b64);
+      //   let base64data = buff.toString('base64');
+      //   // console.log(base64data);
+      //   localStorage.setItem('myImage', base64data);
+      //
+      //   // console.log("b64 converted to a string is " + base64data + '"');
+      //
+      //   let decoded = new Buffer(base64data, 'base64');
+      //   let plainText = decoded.toString('ascii');
+      //
+      //   // console.log("Back to b64 is " + plainText + '"');
+      //
+      //   // .replace("data:", "")
+      //   // .replace(/^.+,/, "");
+      //   // console.log(b64);
+      // };
+      // reader.readAsDataURL(pickedFile);
+      // localBase64 = localStorage.getItem('myImage');
+      // console.log(localBase64);
+
+      //////////////////////
+
       setFile(pickedFile);
       setIsValid(true);
       fileIsValid = true;
@@ -39,6 +65,7 @@ const ImageUpload = props => {
       setIsValid(false);
       fileIsValid = false;
     }
+    // props.onInput(props.id, pickedFile, fileIsValid);
     props.onInput(props.id, pickedFile, fileIsValid);
   };
 

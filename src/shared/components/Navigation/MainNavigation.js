@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import CreateIcon from '@material-ui/icons/Create';
 import MainHeader from './MainHeader';
 import NavLinks from './NavLinks';
 import SideDrawer from './SideDrawer';
@@ -38,7 +37,7 @@ const MainNavigation = props => {
           <span />
         </button>
         <h1 className="main-navigation__title">
-          <Link to="/"><CreateIcon />Recipe Bloc</Link>
+          <Link to="/">Recipe Bloc</Link>
         </h1>
         <nav className="main-navigation__header-nav">
           <NavLinks />

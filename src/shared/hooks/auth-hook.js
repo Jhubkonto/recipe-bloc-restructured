@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 
 let logoutTimer;
+const USER_DATA = "userData"
 
 export const useAuth = () => {
   const [token, setToken] = useState(false);
@@ -14,7 +15,7 @@ export const useAuth = () => {
       expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
     setTokenExpirationDate(tokenExpirationDate);
     localStorage.setItem(
-      'userData',
+      USER_DATA,
       JSON.stringify({userId: uid,
         token: token,
         expiration: tokenExpirationData.toISOString()
@@ -27,7 +28,7 @@ export const useAuth = () => {
     setToken(null);
     setTokenExpirationDate(null);
     setUserId(null);
-    localStorage.removeItem('userData');
+    localStorage.removeItem(USER_DATA);
   }, []);
 
   useEffect(() => {
@@ -39,8 +40,9 @@ export const useAuth = () => {
     }
   }, [token, logout, tokenExpirationDate]);
 
+  // If user data exists, has a token and the expiry date is valid, log user in
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('userData'));
+    const storedData = JSON.parse(localStorage.getItem(USER_DATA));
     if (
       storedData &&
       storedData.token &&

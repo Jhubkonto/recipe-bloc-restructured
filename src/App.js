@@ -8,7 +8,7 @@ import {
 
 // import Users from './user/pages/Users';
 // import NewRecipe from './recipes/pages/NewRecipe';
-// import UserRecipes from './recipes/pages/UserRecipes';
+import UserRecipes from './recipes/pages/UserRecipes';
 // import UpdateRecipe from './recipes/pages/UpdateRecipe';
 // import Auth from './user/pages/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
@@ -18,7 +18,7 @@ import LoadingSpinner from './shared/components/UIElements/LoadingSpinner';
 
 const Users = React.lazy(() => import('./user/pages/Users'));
 const NewRecipe = React.lazy(() => import('./recipes/pages/NewRecipe'));
-const UserRecipes = React.lazy(() => import('./recipes/pages/UserRecipes'));
+// const UserRecipes = React.lazy(() => import('./recipes/pages/UserRecipes'));
 const UpdateRecipe = React.lazy(() => import('./recipes/pages/UpdateRecipe'));
 const Auth = React.lazy(() => import('./user/pages/Auth'));
 

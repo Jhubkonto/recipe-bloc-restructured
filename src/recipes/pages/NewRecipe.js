@@ -56,6 +56,7 @@ const NewRecipe = () => {
           Authorization: 'Bearer ' + auth.token
         });
     history.push('/');
+    // What happens if no connection to backend?
     } catch (err) {}
   };
 
